@@ -24,7 +24,7 @@ class email():
         #strip stop words and number, only remain the stems
         en_stopwords = stopwords.words('english')
         porter = PorterStemmer();
-        self.words = [porter.stem(w) for w in words if w.isalpha() and not w in en_stopwords]
+        self.words = [porter.stem(w.lower()) for w in words if w.isalpha() and not w in en_stopwords]
         #this is the score of its spamicity
         self.score = score
 
