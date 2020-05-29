@@ -1,4 +1,5 @@
 # Python Bayesian Spam Filter
- I will use Naive Bayes Classifier and Bag-of-Words model to implement a Bayesian spam filter
+ This is a spam filter implemented in python to showcase the use of Naive Bayes Classifier and Bag-of-Words model.
+ For a detaile walk-through of the code and explanation of the theories, please look at spamFilter.ipynb
  Please click spam.py for code.
  The rest txt files are training and testing data.
