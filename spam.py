@@ -164,21 +164,21 @@ class Filter():
                 recur = bow[w] + 1
                 bow.update({w:recur})
 
-
-#creating training and testing data
-spam1 = Email('spam1_train','spam1.txt')
-spam2 = Email('spam2_train','spam2.txt')
-spam3 = Email('spam3_test','spam3.txt')
-ham1  = Email('ham1_train','ham1.txt')
-ham2  = Email('ham2_train','ham2.txt')
-ham3  = Email('ham3_test','ham3.txt')
-#creating the filter and set the threshold to 10
-spam_filter = Filter(10)
-#training
-spam_filter.train(spam1, True)
-spam_filter.train(spam2, True)
-spam_filter.train(ham1, False)
-spam_filter.train(ham2, False)
-#testing
-spam_filter.receive(spam3)
-spam_filter.receive(ham3)
+if __name__ == "__main__":
+    #creating training and testing data
+    spam1 = Email('spam1_train','spam1.txt')
+    spam2 = Email('spam2_train','spam2.txt')
+    spam3 = Email('spam3_test','spam3.txt')
+    ham1  = Email('ham1_train','ham1.txt')
+    ham2  = Email('ham2_train','ham2.txt')
+    ham3  = Email('ham3_test','ham3.txt')
+    #creating the filter and set the threshold to 10
+    spam_filter = Filter(10)
+    #training
+    spam_filter.train(spam1, True)
+    spam_filter.train(spam2, True)
+    spam_filter.train(ham1, False)
+    spam_filter.train(ham2, False)
+    #testing
+    spam_filter.receive(spam3)
+    spam_filter.receive(ham3)
