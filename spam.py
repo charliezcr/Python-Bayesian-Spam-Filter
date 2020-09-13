@@ -5,11 +5,15 @@ Created on Mon May 25 17:43:07 2020
 
 @author: Charlie Zheng
 """
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
 
-class email():
+class Email():
     """This class simulates the emails"""
     def __init__(self, id, file, score=0):
         self.id = id  # id of each email
@@ -36,7 +40,7 @@ class email():
         self.score = new_score
 
 
-class filter():
+class Filter():
     """This class simulates the filter of the mailbox"""
 
     def __init__(self, threshold):
@@ -45,8 +49,8 @@ class filter():
 
         self.inbox = []  # the inbox stores all hams
         self.spams = []  # spams store all spams
-        self.spam_BOW = {} # the bag of words of spams
-        self.ham_BOW = {}  # the bag of words of hams
+        self.spam_bow = {} # the bag of words of spams
+        self.ham_bow = {}  # the bag of words of hams
 
 
     def word_spamicity(self, word):
@@ -162,14 +166,14 @@ class filter():
 
 
 #creating training and testing data
-spam1 = email('spam1_train','spam1.txt')
-spam2 = email('spam2_train','spam2.txt')
-spam3 = email('spam3_test','spam3.txt')
-ham1  = email('ham1_train','ham1.txt')
-ham2  = email('ham2_train','ham2.txt')
-ham3  = email('ham3_test','ham3.txt')
+spam1 = Email('spam1_train','spam1.txt')
+spam2 = Email('spam2_train','spam2.txt')
+spam3 = Email('spam3_test','spam3.txt')
+ham1  = Email('ham1_train','ham1.txt')
+ham2  = Email('ham2_train','ham2.txt')
+ham3  = Email('ham3_test','ham3.txt')
 #creating the filter and set the threshold to 10
-spam_filter = filter(10)
+spam_filter = Filter(10)
 #training
 spam_filter.train(spam1, True)
 spam_filter.train(spam2, True)
