@@ -3,5 +3,5 @@
  For a detaile walk-through of the code and explanation of the theories, please look at spamFilter.ipynb or charliezcr.github.io/spamfilter.html<br>
  Please click spam.py for code.<br>
  The rest txt files are training and testing data. <br>
- if you failed to download 'punkt' in nltk, please try:
+ if you failed to download 'punkt' in nltk, please try:<br>
  python -m nltk.downloader -u https://pastebin.com/raw/D3TBY4Mj punkt
