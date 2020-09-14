@@ -15,7 +15,7 @@ from nltk.stem.porter import PorterStemmer
 
 class Email():
     """This class simulates the emails"""
-    def __init__(self, id, file, score=0):
+    def __init__(self, id: int, file, score=0):
         self.id = id  # id of each email
         text = open(file,'rt').read()  # read the text of the file
         words = word_tokenize(text) # split the text into words and strip all punctuation
@@ -43,7 +43,7 @@ class Email():
 class Filter():
     """This class simulates the filter of the mailbox"""
 
-    def __init__(self, threshold):
+    def __init__(self, threshold: int):
         """this is the threshold of the spam score"""
         self.threshold = threshold
 
@@ -53,14 +53,14 @@ class Filter():
         self.ham_bow = {}  # the bag of words of hams
 
 
-    def word_spamicity(self, word):
+    def word_spamicity(self, word: str) -> float:
         """Determines the spamicity of each word.
 
         Args:
-            word: the word to be calculated
+            word (str): the word to be calculated
 
         Returns:
-            the spamicity of the word
+            psw (float): the spamicity of the word
         """
         word_spam = 0  # the frequency of the word appeared in spams
         word_ham = 0 # the frequency of the word appeared in hams
@@ -81,14 +81,14 @@ class Filter():
         return psw
 
 
-    def spam_score(self, mail):
+    def spam_score(self, mail: Email) -> int:
         """Calcuates the spam score of the email according to its words' spamicity
 
         Args:
-            mail: the mail to be calculated
+            mail (Email): the mail to be calculated
 
         Returns:
-            the spam score of the email according to its words' spamicity
+            score (int): the spam score of the email according to its words' spamicity
 
         """
         score = 0
@@ -105,11 +105,11 @@ class Filter():
         return score
 
 
-    def receive(self, mail):
+    def receive(self, mail: Email):
         """Receives a new email, calculates its spam score, update the bags of words, and sort the email
 
         Args:
-            mail: the new mail to be received
+            mail (Email): the new mail to be received
 
         """
 
@@ -128,12 +128,12 @@ class Filter():
             self.add_words(self.ham_bow, mail.get_words())
 
 
-    def train(self, mail, is_spam):
+    def train(self, mail: Email, is_spam: bool):
         """Trains the filter
 
         Args:
-            mail: the training mail
-            is_spam: whether mail is spam or not
+            mail (Email): the training mail
+            is_spam (bool): whether mail is spam or not
         """
 
         if is_spam:
@@ -145,12 +145,12 @@ class Filter():
 
 
     @staticmethod
-    def add_words(bow, words):
+    def add_words(bow: dict, words: list):
         """Adds words to the bag of words
 
         Args:
-            bow: the bag of words
-            words: the words to be added
+            bow (dict): the bag of words
+            words (list): the words to be added
 
         """
         checked = set()  # the checked words
