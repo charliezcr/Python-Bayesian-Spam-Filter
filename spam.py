@@ -39,6 +39,7 @@ class Email():
     def set_score(self, new_score):
         self.score = new_score
 
+from collections import Counter
 
 class Filter():
     """This class simulates the filter of the mailbox"""
@@ -49,8 +50,8 @@ class Filter():
 
         self.inbox = []  # the inbox stores all hams
         self.spams = []  # spams store all spams
-        self.spam_bow = {} # the bag of words of spams
-        self.ham_bow = {}  # the bag of words of hams
+        self.spam_bow = Counter() # the bag of words of spams
+        self.ham_bow = Counter()  # the bag of words of hams
 
 
     def word_spamicity(self, word: str) -> float:
@@ -145,24 +146,16 @@ class Filter():
 
 
     @staticmethod
-    def add_words(bow: dict, words: list):
+    def add_words(bow: Counter, words: list):
         """Adds words to the bag of words
 
         Args:
-            bow (dict): the bag of words
+            bow (Counter): the bag of words
             words (list): the words to be added
 
         """
-        checked = set()  # the checked words
-
         for w in words:
-            checked.add(w)
-            # update bag of words
-            if w not in bow.keys():
-                bow.update({w:1})
-            else:
-                recur = bow[w] + 1
-                bow.update({w:recur})
+            bow[w] += 1
 
 if __name__ == "__main__":
     #creating training and testing data
