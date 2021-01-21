@@ -8,6 +8,7 @@
 ## Modules
 **pip install nltk**
 - [nltk](https://www.nltk.org/): natural language processing
+Please also download punctuation and stopwords in nltk
 ```
 nltk.download('punkt')
 nltk.download('stopwords')
